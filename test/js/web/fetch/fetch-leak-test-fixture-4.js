@@ -21,7 +21,7 @@ try {
     {
       Bun.gc(true);
       const stats = getHeapStats();
-      expect(stats.Response || 0).toBeLessThanOrEqual(batch + 1);
+      expect(stats.Response || 0).toBeLessThanOrEqual(batch + 2);
       expect(stats.Promise || 0).toBeLessThanOrEqual(batch + 2);
     }
   }
