@@ -35,7 +35,7 @@ if (latest.tag_name === release.tag_name) {
 } else if (release.tag_name === "canary") {
   try {
     const build = await getSemver("canary", await getBuild());
-    paths = ["releases/canary", `releases/${build}`, `releases/${full_commit_hash}`];
+    paths = ["releases/canary", `releases/${build}`, `releases/${full_commit_hash}-canary`];
   } catch (error) {
     console.warn(error);
     paths = ["releases/canary"];
@@ -65,6 +65,7 @@ const local =
 
 for (const asset of release.assets) {
   const url = asset.browser_download_url;
+  console.log(url);
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to download asset: ${response.status} ${url}`);
