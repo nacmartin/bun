@@ -65,7 +65,6 @@ const local =
 
 for (const asset of release.assets) {
   const url = asset.browser_download_url;
-  console.log(url);
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to download asset: ${response.status} ${url}`);
